@@ -85,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2783041447292560514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b0bda7120d0b5479c44e03e34391e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 20d38a01f9d7f5d4f88a668123cc7afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
@@ -99,7 +99,6 @@ MonoBehaviour:
   FieldOfView: 40
   MinDistance: 0.3
   MaxDistance: 2
-  PointSize: 5
 --- !u!114 &2783041447292560515
 MonoBehaviour:
   m_ObjectHideFlags: 0
