@@ -18,8 +18,6 @@ using UnityEngine.Rendering.HighDefinition;
 using Unity.Collections;
 
 using UltrasonicData = Simulator.Bridge.Data.UltrasonicData;
-using System.Collections;
-using Simulator.Analysis;
 
 namespace Simulator.Sensors
 {
@@ -60,10 +58,10 @@ namespace Simulator.Sensors
         uint Sequence;
 
         [AnalysisMeasurement(MeasurementType.Distance)]
-        private float minRecorded;
+        public float minRecorded;
         
         [AnalysisMeasurement(MeasurementType.Distance)]
-        private float maxRecorded;
+        public float maxRecorded;
 
         const int MaxJpegSize = 4 * 1024 * 1024; // 4MB
 
