@@ -1,7 +1,7 @@
 {
   "name": "Ultrasonic Sensor",
   "accessType": "public",
-  "description": "Example of an Ultrasonic sensor.",
+  "description": "This sensor outputs the distance (to the center of the sensor) of the closest point within the sensor's FOV.\nSee {{DOCS_HOST}}/docs/python-api/#ultrasonic for more details.",
   "licenseName": "LG Content",
   "copyright": "LG Electronics Inc.",
   "tags": [
