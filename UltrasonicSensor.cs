@@ -79,7 +79,8 @@ namespace Simulator.Sensors
             }
         }
 
-        public override SensorDistributionType DistributionType => SensorDistributionType.LowLoad;
+        public override SensorDistributionType DistributionType => SensorDistributionType.MainOrClient;
+        public override float PerformanceLoad { get; } = 0.05f;
         private int CurrentWidth, CurrentHeight;
         private float CurrentFieldOfView;
 
@@ -104,7 +105,7 @@ namespace Simulator.Sensors
 
         private ShaderTagId passId;
 
-        public void Start()
+        protected override void Initialize()
         {
             SensorCamera.enabled = false;
 
@@ -122,15 +123,7 @@ namespace Simulator.Sensors
             visualizationTexture = new RenderTexture(Width, Height, 24, RenderTextureFormat.RGB565);
         }
 
-        void CustomRender(ScriptableRenderContext context, HDCamera hd)
-        {
-            var cmd = CommandBufferPool.Get();
-            SensorPassRenderer.Render(context, cmd, hd, renderTarget, passId, Color.white);
-            PointCloudManager.RenderDepth(context, cmd, hd, renderTarget.ColorHandle, renderTarget.DepthHandle);
-            CommandBufferPool.Release(cmd);
-        }
-
-        public void OnDestroy()
+        protected override void Deinitialize()
         {
             renderTarget?.Release();
             
@@ -146,6 +139,14 @@ namespace Simulator.Sensors
             {
                 gpuData.Dispose();
             }
+        }
+
+        void CustomRender(ScriptableRenderContext context, HDCamera hd)
+        {
+            var cmd = CommandBufferPool.Get();
+            SensorPassRenderer.Render(context, cmd, hd, renderTarget, passId, Color.white);
+            PointCloudManager.RenderDepth(context, cmd, hd, renderTarget.ColorHandle, renderTarget.DepthHandle);
+            CommandBufferPool.Release(cmd);
         }
 
         public override void OnBridgeSetup(BridgeInstance bridge)
